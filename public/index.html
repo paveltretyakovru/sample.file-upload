@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input type="file" className="form-control" name="file" />
+  <button onclick="sendForm()">Send</button>
+
+  <script>
+    const fileField = document.querySelector('input[type="file"]');
+
+    function sendForm() {
+      const formData = new FormData();
+
+      formData.append('file', fileField.files[0]);
+
+      fetch('https://example.com', {
+        method: 'POST',
+        body: formData
+      }).then(console.log).catch(console.log)
+    }
+  </script>
+</body>
+</html>
